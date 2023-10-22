@@ -3,10 +3,13 @@
 - hosts: localhost
   become: true
   tasks:
-    - name: Make ~/workspace
+    # this could be better
+    - name: Make /home/dev/workspace
       file:
-        path: ~/workspace
+        path: /home/dev/workspace
         state: directory
+        owner: dev
+        group: dev
 
     # ------------------------------------------------------
     # Debian
