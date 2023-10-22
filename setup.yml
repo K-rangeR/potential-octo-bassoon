@@ -39,7 +39,7 @@
           - make
           - gcc
           - clang
-          - clangd
+          #- clangd # not on fedora
           - grep
           - git
           - subversion
