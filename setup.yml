@@ -1,0 +1,29 @@
+---
+
+- hosts: localhost
+  tasks:
+    - name: Make ~/workspace
+      file:
+        path: ~/workspace
+        state: directory
+
+    # ------------------------------------------------------
+    # Debian
+    # ------------------------------------------------------
+    - name: Update package repo index on Debian
+      apt:
+        update_cache: yes
+      when: ansible_facts['os_family'] == 'Debian'
+
+    - name: Update packages on Debian
+      apt:
+        upgrade: dist
+      when: ansible_facts['os_family'] == 'Debian'
+
+    # ------------------------------------------------------
+    # RHL (CentOS and Fedora)
+    # ------------------------------------------------------
+    - name: Upgrade packages on RHL
+      yum:
+        name: '*'
+        state: latest
