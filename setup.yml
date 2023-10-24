@@ -11,47 +11,4 @@
         owner: dev
         group: dev
 
-    # ------------------------------------------------------
-    # Debian
-    # ------------------------------------------------------
-    - name: Update package repo index on Debian
-      apt:
-        update_cache: yes
-      when: ansible_facts['os_family'] == 'Debian'
-
-    - name: Update packages on Debian
-      apt:
-        upgrade: dist
-      when: ansible_facts['os_family'] == 'Debian'
-
-    # ------------------------------------------------------
-    # RHL (CentOS and Fedora)
-    # ------------------------------------------------------
-    - name: Upgrade packages on RHL
-      yum:
-        name: '*'
-        state: latest
-      when: ansible_facts['os_family'] == 'RedHat'
-
-    # ------------------------------------------------------
-    # Dev tools
-    # ------------------------------------------------------
-    - name: Install dev tools
-      package:
-        name:
-          - make
-          - gcc
-          - clang
-          #- clangd # not on fedora
-          - grep
-          - git
-          - subversion
-          - python3
-          - ruby
-          - neovim
-          - tmux
-          - tree
-          - htop
-          - stow
-          - ripgrep
-        state: latest
+    - include_tasks: setup-"{{ ansible_distribution }}".yml

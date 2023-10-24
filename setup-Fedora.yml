@@ -1,0 +1,21 @@
+---
+
+- name: Install dev tools
+  dnf:
+    name:
+      - make
+      - gcc
+      - clang
+      - clang-tools-extra
+      - grep
+      - git
+      - subversion
+      - python3
+      - ruby
+      - neovim
+      - tmux
+      - tree
+      - htop
+      - stow
+      - ripgrep
+    state: latest

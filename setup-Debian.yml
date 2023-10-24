@@ -1,0 +1,27 @@
+---
+
+- name: Update packages on Debian
+  apt:
+    upgrade: dist
+
+- name: Install dev tools
+  apt:
+    name:
+      - make
+      - gcc
+      - g++
+      - clang
+      - clangd
+      - git
+      - subversion
+      - python3
+      - ruby
+      - neovim
+      - tmux
+      - tree
+      - htop
+      - stow
+      - grep
+      - ripgrep
+    state: latest
+    update_cache: yes

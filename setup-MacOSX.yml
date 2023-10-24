@@ -1,0 +1,19 @@
+---
+
+- name: Install dev tools
+  homebrew:
+    name:
+      - make
+      - git
+      - python3
+      - curl
+      - wget
+      - neovim
+      - tmux
+      - tree
+      - stow
+      - grep
+      - ripgrep
+      - check
+    state: latest
+    update_cache: yes
