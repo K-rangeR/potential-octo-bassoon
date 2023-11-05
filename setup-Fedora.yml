@@ -1,6 +1,7 @@
 ---
 
 - name: Install dev tools
+  become: true
   dnf:
     name:
       - make

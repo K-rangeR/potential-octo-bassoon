@@ -1,10 +1,12 @@
 ---
 
 - name: Update packages on Debian
+  become: true
   apt:
     upgrade: dist
 
 - name: Install dev tools
+  become: true
   apt:
     name:
       - make
