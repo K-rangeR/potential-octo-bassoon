@@ -4,6 +4,7 @@
   become: true
   tasks:
     # this could be better
+    # like don't hard code the user name
     - name: Make /home/dev/workspace
       file:
         path: /home/dev/workspace
@@ -12,3 +13,16 @@
         group: dev
 
     - include_tasks: "setup-{{ ansible_distribution }}.yml"
+
+    - name: Clone dotfiles repo
+      git:
+        repo: https://github.com/K-rangeR/dotfiles.git
+        dest: /home/dev/.dotfiles
+        clone: yes
+        update: yes
+
+    - name: Stow dotfiles
+      shell:
+        cmd: stow bash ; stow git ; stow tmux
+        chdir: /home/dev/.dotfiles
+
