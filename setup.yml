@@ -5,6 +5,7 @@
   tasks:
     # this could be better
     # like don't hard code the user name
+    # and other stuf
     - name: Make /home/dev/workspace
       file:
         path: /home/dev/workspace
